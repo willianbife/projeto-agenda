@@ -1,0 +1,98 @@
+/* Corpo da página */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(to right, #E9D0EB, #FAD3FF, #F5F5F5, #F8F0F0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Container geral */
+.page_cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo */
+.logo img{
+    width: 140px;
+    height: 140px;
+    background: white;
+    border-radius: 50%;
+    margin: -0px auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Card branco */
+.cadastro_card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 340px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    text-align: center;
+}
+
+/* Título */
+.cadastro_card h2 {
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* Campos */
+.campo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.campo label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 9px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Botão cadastrar */
+button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 120px;
+    border: none;
+    border-radius: 20px;
+    background: #f4b6d8;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e99ac7;
+}
+
+/* Link para login */
+.login_link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login_link a {
+    color: #b783f6;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login_link a:hover {
+    text-decoration: underline;
+}

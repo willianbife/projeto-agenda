@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simone Rocha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Container principal da tela de login -->
+    <main class="page_login">
+
+        <!-- Área da logo -->
+        <div class="logo">
+
+            <img src="src/WhatsApp Image 2026-01-08 at 15.28.20 (1).jpeg" alt="LogoMarca">
+        </div>
+
+        <!-- Card branco do login -->
+        <div class="login_card">
+            <!-- Campo Telefone -->
+            <form action="home.html" method="get">
+
+                <div class="campo">
+                    <label for="telefone"><b>Telefone:</b></label>
+                    <input type="number" id="telefone" placeholder="telefone" name="telefone" required>
+                </div>
+                <!-- Campo Senha -->
+                <div class="campo">
+                    <label for="senha"><b>Senha:</b></label>
+                    <input type="password" id="senha" placeholder="Coloque sua senha!" name="senha" required>
+                </div>
+
+                <!-- Botão de login -->
+                <div class="button_login">
+                    <button type="button" onclick="login()">Login</button>
+            </form>
+        </div>
+        </div>
+        <!-- tela de cadastro -->
+        <div class="cadastro">
+            <p class="cadastro_link">
+                <a href="cadastro.html">Cadastre-se aqui!</a>
+            </p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
