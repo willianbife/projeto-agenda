@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sistema de Agendamento</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <span class="frame-text">Frame</span>
+            <span class="system-title">📅 Sistema de Agendamento de Serviços</span>
+        </div>
+        <div class="header-right">
+            <span class="welcome-text">Olá, <span id="userName">Simone Rocha</span>!</span>
+            <button class="profile-btn">👤</button>
+            <button class="logout-btn" onclick="logout()">⎋ Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Cards de Ações -->
+        <section class="action-cards">
+            <div class="card" onclick="abrirModal('cadastrarCliente')">
+                <div class="card-icon">👤➕</div>
+                <h3>Cadastrar<br>Cliente</h3>
+                <p>Adicionar clientes<br>ao sistema</p>
+            </div>
+
+            <div class="card" onclick="abrirModal('novoAgendamento')">
+                <div class="card-icon">📅➕</div>
+                <h3>Novo<br>Agendamento</h3>
+                <p>Agenciar novos<br>serviços</p>
+            </div>
+
+            <div class="card" onclick="abrirModal('relatorios')">
+                <div class="card-icon">📊</div>
+                <h3>Relatórios<br>Financeiros</h3>
+                <p>Ver receitas e<br>despesas</p>
+            </div>
+
+            <div class="card" onclick="abrirModal('formasPagamento')">
+                <div class="card-icon">💳</div>
+                <h3>Formas<br>de Pagamento</h3>
+                <p>Configurar<br>métodos</p>
+            </div>
+        </section>
+
+        <!-- Container Principal -->
+        <div class="main-container">
+            <!-- Próximos Agendamentos -->
+            <section class="agendamentos-section">
+                <div class="section-header">
+                    <h2>📅 Próximos Agendamentos</h2>
+                </div>
+
+                <!-- Calendário -->
+                <div class="calendario">
+                    <div class="calendario-header">
+                        <button onclick="mudarMes(-1)">❮</button>
+                        <select id="mesSelect" onchange="atualizarCalendario()">
+                            <option value="0">Janeiro</option>
+                            <option value="1">Fevereiro</option>
+                            <option value="2">Março</option>
+                            <option value="3">Abril</option>
+                            <option value="4">Maio</option>
+                            <option value="5">Junho</option>
+                            <option value="6">Julho</option>
+                            <option value="7">Agosto</option>
+                            <option value="8" selected>Setembro</option>
+                            <option value="9">Outubro</option>
+                            <option value="10">Novembro</option>
+                            <option value="11">Dezembro</option>
+                        </select>
+                        <select id="anoSelect" onchange="atualizarCalendario()">
+                            <option value="2024">2024</option>
+                            <option value="2025" selected>2025</option>
+                            <option value="2026">2026</option>
+                        </select>
+                        <button onclick="mudarMes(1)">❯</button>
+                    </div>
+
+                    <div class="calendario-grid" id="calendarioGrid">
+                        <!-- Gerado por JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Lista de Agendamentos -->
+                <div class="lista-agendamentos" id="listaAgendamentos">
+                    <div class="agendamento-item">
+                        <div class="agendamento-info">
+                            <span class="agendamento-icon">👤</span>
+                            <div>
+                                <strong>Aline Santos</strong>
+                                <p>Manicure</p>
+                            </div>
+                        </div>
+                        <div class="agendamento-data">
+                            <span>24/04/2026</span>
+                            <span class="data-icon">📅</span>
+                        </div>
+                    </div>
+
+                    <div class="agendamento-item">
+                        <div class="agendamento-info">
+                            <span class="agendamento-icon">👤</span>
+                            <div>
+                                <strong>Carla oliveira</strong>
+                                <p>Pedicure</p>
+                            </div>
+                        </div>
+                        <div class="agendamento-data">
+                            <span>24/04/2026</span>
+                            <span class="data-icon">📅</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-novo-agendamento" onclick="abrirModal('novoAgendamento')">
+                    Novo agendamento ✓
+                </button>
+            </section>
+
+            <!-- Resumo Financeiro -->
+            <section class="resumo-financeiro">
+                <h2>Resumo Financeiro</h2>
+                
+                <div class="tabs-financeiro">
+                    <button class="tab active" onclick="mudarTab('hoje')">Hoje</button>
+                    <button class="tab" onclick="mudarTab('mensal')">Mensal</button>
+                    <button class="tab" onclick="mudarTab('anual')">Anual</button>
+                </div>
+
+                <div class="financeiro-content" id="financeiroContent">
+                    <div class="financeiro-item receita">
+                        <span>Receita Hoje</span>
+                        <h3>R$ 250,00</h3>
+                    </div>
+                    <div class="financeiro-valor-grande">
+                        <span class="valor-positivo">+R$250,00</span>
+                    </div>
+                    
+                    <div class="financeiro-item despesa">
+                        <span>Despesas</span>
+                        <h3 class="texto-vermelho">-R$70,00</h3>
+                    </div>
+                    <div class="financeiro-valor-grande">
+                        <span class="valor-negativo">-R$70,00</span>
+                    </div>
+
+                    <div class="financeiro-item despesa">
+                        <span>Despesas</span>
+                    </div>
+                </div>
+
+                <button class="btn-relatorios" onclick="abrirModal('relatorios')">
+                    Ver Relatórios
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Cadastrar Cliente -->
+    <div id="modalCadastrarCliente" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('cadastrarCliente')">&times;</span>
+            <h2>Cadastrar Cliente</h2>
+            <form id="formNovoCliente">
+                <div class="campo">
+                    <label>Nome Completo</label>
+                    <input type="text" id="clienteNome" required>
+                </div>
+                <div class="campo">
+                    <label>Telefone</label>
+                    <input type="tel" id="clienteTelefone" required>
+                </div>
+                <div class="campo">
+                    <label>E-mail (opcional)</label>
+                    <input type="email" id="clienteEmail">
+                </div>
+                <button type="submit">Cadastrar Cliente</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Novo Agendamento -->
+    <div id="modalNovoAgendamento" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('novoAgendamento')">&times;</span>
+            <h2>Novo Agendamento</h2>
+            <form id="formNovoAgendamento">
+                <div class="campo">
+                    <label>Cliente</label>
+                    <select id="agendamentoCliente" required>
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Serviço</label>
+                    <select id="agendamentoServico" required>
+                        <option value="">Selecione o serviço</option>
+                        <option value="manicure">Manicure</option>
+                        <option value="pedicure">Pedicure</option>
+                        <option value="combo">Manicure + Pedicure</option>
+                        <option value="decoracao">Decoração de Unhas</option>
+                        <option value="blindagem">Blindagem</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Data</label>
+                    <input type="date" id="agendamentoData" required>
+                </div>
+                <div class="campo">
+                    <label>Horário</label>
+                    <input type="time" id="agendamentoHora" required>
+                </div>
+                <div class="campo">
+                    <label>Valor (R$)</label>
+                    <input type="number" id="agendamentoValor" step="0.01" required>
+                </div>
+                <button type="submit">Agendar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Relatórios -->
+    <div id="modalRelatorios" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="fecharModal('relatorios')">&times;</span>
+            <h2>Relatórios Financeiros</h2>
+            <div class="relatorio-content">
+                <div class="periodo-selector">
+                    <button onclick="carregarRelatorio('dia')">Dia</button>
+                    <button onclick="carregarRelatorio('semana')">Semana</button>
+                    <button onclick="carregarRelatorio('mes')" class="active">Mês</button>
+                    <button onclick="carregarRelatorio('ano')">Ano</button>
+                </div>
+                <div id="relatorioResultado">
+                    <p>Selecione um período para ver os relatórios</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Formas de Pagamento -->
+    <div id="modalFormasPagamento" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('formasPagamento')">&times;</span>
+            <h2>Formas de Pagamento</h2>
+            <div class="formas-pagamento-list">
+                <div class="forma-item">
+                    <span>💵 Dinheiro</span>
+                    <input type="checkbox" checked>
+                </div>
+                <div class="forma-item">
+                    <span>💳 Cartão de Crédito</span>
+                    <input type="checkbox" checked>
+                </div>
+                <div class="forma-item">
+                    <span>💳 Cartão de Débito</span>
+                    <input type="checkbox" checked>
+                </div>
+                <div class="forma-item">
+                    <span>📱 PIX</span>
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+            <button onclick="salvarFormasPagamento()">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
